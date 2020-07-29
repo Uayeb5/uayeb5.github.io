@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Wh0rU</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <link href="img/tenor.gif" rel="icon">
+  <link href="img/tenor.gif" rel="apple-touch-icon">
+
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+  <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll" href="index.html">Wh0rU</a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll active" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="home" class="intro route bg-image" style="background-image: url(img/flag.png)">
+    <div class="overlay-itro"></div>
+    <div class="intro-content display-table">
+      <div class="table-cell">
+        <div class="container">
+	<center>
+          <h1 class="intro-title mb-4">WriteUp #1</h1>
+          <p class="intro-subtitle"><span class="text-slider-items">TryHackMe,c4ptur3-th3-fl4g</span><strong class="text-slider"></strong></p>
+	</center>
+        </div>
+      </div>
+    </div>
+  </div>
+	<center>
+		<br />
+    <div class="col-md-6">
+                <div class="about-me pt-4 pt-md-0">
+                  <div class="title-box-2">
+                    <h5 class="title-left">
+                      TryHackMe - c4ptur3-th3-fl4g
+                    </h5>
+                  
+            <div class="article-content">
+            	<p><span style="color: #ffffff;">Difficulty : <span style="color: #00ff00;">Easy</span></span></p>
+		<p><span style="color: #ffffff;">A beginner level CTF challenge</span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="color: #ffffff;"><strong><span style="text-decoration: underline;"><span># Task 1 : Translation &amp; Shifting</span></span></strong></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="color: #ffffff;">1 - c4n y0u c4p7u23 7h3 f149?</span><br /><span style="color: #ffffff;"><em> An easy one, answer is : can you capture the flag ?</em></span></p>
+		<p><span style="color: #ffffff;">2 - 01101100 01100101 01110100 01110011 00100000 01110100 01110010 [...]</span><br /><span style="color: #ffffff;"><em> Here is Binary that we have to translate in plain text.</em></span></p>
+		<p><span style="color: #ffffff;">3 - MJQXGZJTGIQGS4ZAON2XAZLSEBRW63LNN5XCA2LOEBBVIRRHOM======</span><br /><span style="color: #ffffff;"><em> Base32 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">4 - [...] jQgZGlnaXQgcmVwcmVzZW50cyBleGFjdGx5IDYgYml0cyBvZiBkYXRhLg==</span><br /><span style="color: #ffffff;"><em> Base64 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">5 - 68 65 78 61 64 65 63 69 6d 61 6c 20 6f 72 20 62 61 73 65 31 36 3f</span><br /><span style="color: #ffffff;"><em> Hexadecimal to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">6 - Ebgngr zr 13 cynprf!</span><br /><span style="color: #ffffff;"><em> ROT13 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">7 - *@F DA:? &gt;6 C:89E C@F?5 323J C:89E C@F?5 Wcf E:&gt;6DX</span><br /><span style="color: #ffffff;"><em> ROT47 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">8 - - . .-.. . -.-. --- -- -- ..- -. .. -.-. .- - .. --- -.</span></p>
+		<p><span style="color: #ffffff;">. -. -.-. --- -.. .. -. --.</span><br /><span style="color: #ffffff;"><em> Morse to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">9 - 85 110 112 97 99 107 32 116 104 105 115 32 66 67 68</span><br /><span style="color: #ffffff;"><em> BCD to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">10 - [...] LS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tLS0gLi0tLS0gLS0tLS0gLi0tLS0=</span><br /><span style="color: #ffffff;"><em> The original message was in Base 64, decoded into Morse, which itself decoded into Binary, which then decoded into a ROT47 cipher, which THEN decoded to decimal, then to plain.</em></span><br /><span style="color: #ffffff;"><em> Excuse me wtf</em></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="text-decoration: underline; color: #ffffff;"><strong><span># Task 2 : Hashes</span></strong></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="color: #ffffff;">A hash function is any function that can be used to map data of arbitrary size onto data of a fixed size. </span><br /><span style="color: #ffffff;">The values returned by a hash function are called hash values, hashcodes, digests, or simply hashes.</span><br /><span style="color: #ffffff;">Reference this website for known hash types : https://hashcat.net/wiki/doku.php?id=example_hashes</span></p>
+		<p><span style="color: #ffffff;">You should use hashcat for this part, but you can also check for online decryptor</span></p>
+		<p><span style="color: #ffffff;">1 - 39d4a2ba07e44421c9bedd54dc4e1182</span><br /><span style="color: #ffffff;"><em> MD2 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">2 - e0418e7c6c2f630c71b2acabbcf8a2fb</span><br /><span style="color: #ffffff;"><em> MD4 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">3 - efbd448a935421a54dda43da43a701e1</span><br /><span style="color: #ffffff;"><em> MD5 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">4 - 11FE61CE0639AC2A1E815D62D7DEEC53</span><br /><span style="color: #ffffff;"><em> NTLM to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">5 - a361f05487b879f25cc4d7d7fae3c7442e7849ed15c94010b389faafaf [...]</span><br /><span style="color: #ffffff;"><em> SHA-512 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">6 - d48a2f790f7294a4ecbac10b99a1a4271cdc67fff7246a314297f2bca2aaa71f</span><br /><span style="color: #ffffff;"><em> SHA-256 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">7 - a34e50c78f67d3ec5d0479cde1406c6f82ff6cd0</span><br /><span style="color: #ffffff;"><em> SHA-1 to plain text.</em></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="text-decoration: underline; color: #ffffff;"><strong><span># Task 3 : Spectrograms</span></strong></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="color: #ffffff;">A spectrogram is a visual representation of the spectrum of frequencies of a signal as it varies with time. </span><br /><span style="color: #ffffff;">When applied to an audio signal, spectrograms are sometimes called sonographs, voiceprints, or voicegrams.</span><br /><span style="color: #ffffff;">When the data is represented in a 3D plot they may be called waterfalls.</span></p>
+		<p><span style="color: #ffffff;">1 - <em>The hint was "Audacity", maybe you should use it with the downloaded file.</em></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="text-decoration: underline; color: #ffffff;"><strong><span># Task 4 : Steganography</span></strong></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="color: #ffffff;">Steganography is the practice of concealing a file, message, image, or video within another file, message, image, or video.</span></p>
+		<p><span style="color: #ffffff;">1 - <em>I recommend to use steghide. Flag is stored in steganopayload2248.txt</em></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="text-decoration: underline; color: #ffffff;"><strong><span># Task 5 : Security through obscurity</span></strong></span></p>
+		<p><span style="color: #ffffff;">&nbsp;</span></p>
+		<p><span style="color: #ffffff;">Security through obscurity is the reliance in security engineering on the secrecy of the design or implementation as the main method of providing security for a system or component of a system.</span></p>
+		<p><span style="color: #ffffff;">1 - <em>Open the .jpg with a text editor, you will be surprised.</em></span></p>   
+		</div>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+    </center>     
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/counterup/jquery.waypoints.min.js"></script>
+  <script src="lib/counterup/jquery.counterup.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/typed/typed.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
